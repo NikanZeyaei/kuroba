@@ -1,5 +1,11 @@
 # kuroba
 
+## 0.0.5
+
+### Patch Changes
+
+- Add `client.index.get(board, page?, options?)` endpoint with `IndexPage` model.
+
 ## 0.0.4
 
 ### Patch Changes

@@ -1,6 +1,6 @@
 {
 	"name": "kuroba",
-	"version": "0.0.4",
+	"version": "0.0.5",
 	"description": "A type-safe TypeScript API client for 4chan and imageboards",
 	"type": "module",
 	"main": "./dist/index.js",
