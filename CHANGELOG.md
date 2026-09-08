@@ -1,5 +1,11 @@
 # kuroba
 
+## 0.0.6
+
+### Patch Changes
+
+- Comprehensive JSDoc documentation across all models and endpoints with `@remarks Raw:` field mappings from official 4chan API documentation.
+
 ## 0.0.5
 
 ### Patch Changes
