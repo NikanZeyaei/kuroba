@@ -1,5 +1,11 @@
 # kuroba
 
+## 0.0.4
+
+### Patch Changes
+
+- Add `client.threads` namespace (`get` and `list`) with `Thread`, `Post`, and `ThreadListPage` models.
+
 ## 0.0.3
 
 ### Patch Changes
