@@ -1,5 +1,11 @@
 # kuroba
 
+## 0.0.3
+
+### Patch Changes
+
+- Add `client.catalog.list(board, options?)` endpoint to fetch board catalogs with `CatalogPage`, `CatalogThread`, and `CatalogReply` models.
+
 ## 0.0.2
 
 ### Patch Changes
