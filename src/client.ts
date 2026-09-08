@@ -11,18 +11,33 @@ const DEFAULT_API_BASE_URL = "https://a.4cdn.org";
 const DEFAULT_MEDIA_BASE_URL = "https://i.4cdn.org";
 const DEFAULT_STATIC_BASE_URL = "https://s.4cdn.org";
 
+/**
+ * Universal type-safe API client for 4chan.
+ * Compatible with Node.js (>= 18) and modern browser runtimes.
+ */
 export class KurobaClient {
+	/** Base API domain (default: `https://a.4cdn.org`) */
 	readonly baseUrl: string;
+	/** Base domain for attachments and thumbnails (default: `https://i.4cdn.org`) */
 	readonly mediaBaseUrl: string;
+	/** Base domain for static site icons and flags (default: `https://s.4cdn.org`) */
 	readonly staticBaseUrl: string;
+	/** Default request timeout in milliseconds */
 	readonly timeoutMs?: number | undefined;
 
+	/** Endpoint for board metadata and directory information (`boards.json`) */
 	readonly boards: BoardsEndpoint;
+	/** Endpoint for full board catalogs (`[board]/catalog.json`) */
 	readonly catalog: CatalogEndpoint;
+	/** Endpoint for board archives (`[board]/archive.json`) */
 	readonly archive: ArchiveEndpoint;
+	/** Endpoint for full threads and thread list summaries */
 	readonly threads: ThreadsEndpoint;
+	/** Endpoint for board index pages (`[board]/[1-15].json`) */
 	readonly index: IndexEndpoint;
+	/** URL generator for attachment images, thumbnails, flags, and spoilers */
 	readonly media: MediaHelper;
+
 	constructor(options?: KurobaClientOptions) {
 		this.baseUrl = options?.baseUrl ?? DEFAULT_API_BASE_URL;
 		this.mediaBaseUrl = options?.mediaBaseUrl ?? DEFAULT_MEDIA_BASE_URL;
@@ -57,6 +72,9 @@ export class KurobaClient {
 	}
 }
 
+/**
+ * Functional factory for creating a new `KurobaClient` instance.
+ */
 export function createKurobaClient(
 	options?: KurobaClientOptions,
 ): KurobaClient {

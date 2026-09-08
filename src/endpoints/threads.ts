@@ -8,16 +8,25 @@ import {
 	ThreadListPage,
 } from "../types/threads.js";
 
+/**
+ * Endpoint for full threads and summarized thread lists.
+ * Ref: `4chan-API/pages/Threads.md` and `Threadlist.md`
+ */
 export class ThreadsEndpoint {
 	constructor(private readonly transport: TransportConfig) {}
 
 	/**
 	 * Retrieves a complete thread with all posts from `https://a.4cdn.org/[board]/thread/[threadId].json`.
 	 *
+	 * Ref: `4chan-API/pages/Threads.md`
+	 *
 	 * @param board Board abbreviation (e.g. "po", "g", "a").
-	 * @param threadId The OP number of the thread.
-	 * @param options Request options.
-	 * @returns The Thread model or null on 304 Not Modified. Throws KurobaHttpError on 404.
+	 * @param threadId The OP post number of the thread.
+	 * @param options Optional request options (`headers`, `signal`, `timeoutMs`, `ifModifiedSince`).
+	 * @returns The `Thread` model containing `op` and all `replies`, or `null` on HTTP 304 Not Modified.
+	 * @throws `KurobaHttpError` with status 404 if the thread was pruned or does not exist.
+	 * @throws `KurobaRateLimitError` if HTTP 429 Too Many Requests is received.
+	 * @throws `KurobaParseError` if JSON response parsing fails.
 	 */
 	async get(
 		board: string,
@@ -39,9 +48,16 @@ export class ThreadsEndpoint {
 	/**
 	 * Retrieves the summarized thread list for a board from `https://a.4cdn.org/[board]/threads.json`.
 	 *
+	 * Ref: `4chan-API/pages/Threadlist.md`
+	 *
+	 * Useful for lightweight polling to detect thread modifications without downloading full catalogs.
+	 *
 	 * @param board Board abbreviation (e.g. "po", "g", "a").
-	 * @param options Request options.
-	 * @returns Array of ThreadListPage models. Returns empty array on 304 Not Modified.
+	 * @param options Optional request options (`headers`, `signal`, `timeoutMs`, `ifModifiedSince`).
+	 * @returns Array of `ThreadListPage` models with thread IDs and timestamps. Returns empty array `[]` on HTTP 304 Not Modified.
+	 * @throws `KurobaHttpError` on non-2xx HTTP response codes.
+	 * @throws `KurobaRateLimitError` if HTTP 429 Too Many Requests is received.
+	 * @throws `KurobaParseError` if JSON response parsing fails.
 	 */
 	async list(
 		board: string,

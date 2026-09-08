@@ -3,17 +3,26 @@ import { IndexPage, type RawIndexResponse } from "../types/index-page.js";
 import type { RequestOptions } from "../types/options.js";
 import { Post, Thread } from "../types/threads.js";
 
+/**
+ * Endpoint for board main index pages.
+ * Ref: `4chan-API/pages/Indexes.md`
+ */
 export class IndexEndpoint {
 	constructor(private readonly transport: TransportConfig) {}
 
 	/**
-	 * Retrieves an index page (1 to 15) for a board containing threads and preview replies.
+	 * Retrieves a specific board index page (1 to 15) containing active threads and their preview replies.
 	 * Fetches `https://a.4cdn.org/[board]/[page].json`.
 	 *
+	 * Ref: `4chan-API/pages/Indexes.md`
+	 *
 	 * @param board Board abbreviation (e.g. "po", "g", "a").
-	 * @param page Index page number (defaults to 1).
-	 * @param options Request options.
-	 * @returns The IndexPage model or null on 304 Not Modified. Throws KurobaHttpError on 404.
+	 * @param page Index page number (1-indexed, defaults to 1).
+	 * @param options Optional request options (`headers`, `signal`, `timeoutMs`, `ifModifiedSince`).
+	 * @returns The `IndexPage` model or `null` on HTTP 304 Not Modified.
+	 * @throws `KurobaHttpError` with status 404 if the page or board does not exist.
+	 * @throws `KurobaRateLimitError` if HTTP 429 Too Many Requests is received.
+	 * @throws `KurobaParseError` if JSON response parsing fails.
 	 */
 	async get(
 		board: string,
