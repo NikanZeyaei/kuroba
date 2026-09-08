@@ -1,5 +1,11 @@
 # kuroba
 
+## 0.0.2
+
+### Patch Changes
+
+- [`e0a698b`](https://github.com/NikanZeyaei/kuroba/commit/e0a698ba764051a6e36fe0887645c3a7d4f3874f) Thanks [@NikanZeyaei](https://github.com/NikanZeyaei)! - Add `client.archive.list(board, options?)` to retrieve archived thread IDs from `/<board>/archive.json`.
+
 ## 0.0.1
 
 ### Patch Changes
