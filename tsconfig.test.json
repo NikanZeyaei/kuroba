@@ -1,0 +1,10 @@
+{
+	"extends": "./tsconfig.json",
+	"compilerOptions": {
+		"rootDir": ".",
+		"types": ["node"],
+		"lib": ["es2024", "dom", "dom.iterable"],
+		"noEmit": true
+	},
+	"include": ["src/**/*", "test/**/*"]
+}
