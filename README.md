@@ -86,6 +86,10 @@ Creates a client instance.
 - **`client.threads.get(board: string, threadId: number, options?: RequestOptions): Promise<Thread | null>`**: Fetches `https://a.4cdn.org/[board]/thread/[threadId].json` and returns a complete `Thread` model (with `thread.op`, `thread.replies`, `thread.postCount`, etc.). Returns `null` on HTTP 304 Not Modified. Throws `KurobaHttpError` (404) if the thread was pruned or does not exist.
 - **`client.threads.list(board: string, options?: RequestOptions): Promise<ThreadListPage[]>`**: Fetches `https://a.4cdn.org/[board]/threads.json` and returns a lightweight summarized list of all threads across all board pages (IDs, modification timestamps, reply counts). Returns empty array `[]` on HTTP 304 Not Modified.
 
+#### `client.index`
+
+- **`client.index.get(board: string, page?: number, options?: RequestOptions): Promise<IndexPage | null>`**: Fetches `https://a.4cdn.org/[board]/[page].json` (page defaults to 1) and returns an `IndexPage` model containing the threads on that index page and their preview replies. Returns `null` on HTTP 304 Not Modified. Throws `KurobaHttpError` (404) if the board or page does not exist.
+
 #### `client.media`
 
 URL helper methods for static and user-uploaded assets:

@@ -5,6 +5,7 @@ import {
 	BoardsEndpoint,
 	CatalogEndpoint,
 	createKurobaClient,
+	IndexEndpoint,
 	KurobaClient,
 	MediaHelper,
 	ThreadsEndpoint,
@@ -21,6 +22,7 @@ describe("KurobaClient initialization", () => {
 		assert.ok(client.catalog instanceof CatalogEndpoint);
 		assert.ok(client.archive instanceof ArchiveEndpoint);
 		assert.ok(client.threads instanceof ThreadsEndpoint);
+		assert.ok(client.index instanceof IndexEndpoint);
 		assert.ok(client.media instanceof MediaHelper);
 	});
 
