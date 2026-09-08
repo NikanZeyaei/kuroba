@@ -1,0 +1,14 @@
+{
+  "name": "kuroba",
+  "version": "0.0.0",
+  "description": "A type-safe TypeScript API client for 4chan and imageboards",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "packageManager": "pnpm@10.18.0",
+  "keywords": ["4chan", "imageboard", "api-client", "typescript"],
+  "author": "nikanzeyaei",
+  "license": "MIT"
+
+}
