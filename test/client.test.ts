@@ -7,6 +7,7 @@ import {
 	createKurobaClient,
 	KurobaClient,
 	MediaHelper,
+	ThreadsEndpoint,
 } from "../dist/index.js";
 
 describe("KurobaClient initialization", () => {
@@ -19,6 +20,7 @@ describe("KurobaClient initialization", () => {
 		assert.ok(client.boards instanceof BoardsEndpoint);
 		assert.ok(client.catalog instanceof CatalogEndpoint);
 		assert.ok(client.archive instanceof ArchiveEndpoint);
+		assert.ok(client.threads instanceof ThreadsEndpoint);
 		assert.ok(client.media instanceof MediaHelper);
 	});
 

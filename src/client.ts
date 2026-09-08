@@ -2,6 +2,7 @@ import { ArchiveEndpoint } from "./endpoints/archive.js";
 import { BoardsEndpoint } from "./endpoints/boards.js";
 import { CatalogEndpoint } from "./endpoints/catalog.js";
 import { MediaHelper } from "./endpoints/media.js";
+import { ThreadsEndpoint } from "./endpoints/threads.js";
 import type { TransportConfig } from "./transport.js";
 import type { KurobaClientOptions } from "./types/options.js";
 
@@ -18,8 +19,8 @@ export class KurobaClient {
 	readonly boards: BoardsEndpoint;
 	readonly catalog: CatalogEndpoint;
 	readonly archive: ArchiveEndpoint;
+	readonly threads: ThreadsEndpoint;
 	readonly media: MediaHelper;
-
 	constructor(options?: KurobaClientOptions) {
 		this.baseUrl = options?.baseUrl ?? DEFAULT_API_BASE_URL;
 		this.mediaBaseUrl = options?.mediaBaseUrl ?? DEFAULT_MEDIA_BASE_URL;
@@ -48,6 +49,7 @@ export class KurobaClient {
 		this.boards = new BoardsEndpoint(transport);
 		this.catalog = new CatalogEndpoint(transport);
 		this.archive = new ArchiveEndpoint(transport);
+		this.threads = new ThreadsEndpoint(transport);
 		this.media = new MediaHelper(this.mediaBaseUrl, this.staticBaseUrl);
 	}
 }

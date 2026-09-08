@@ -3,6 +3,7 @@ export { ArchiveEndpoint } from "./endpoints/archive.js";
 export { BoardsEndpoint } from "./endpoints/boards.js";
 export { CatalogEndpoint } from "./endpoints/catalog.js";
 export { MediaHelper } from "./endpoints/media.js";
+export { ThreadsEndpoint } from "./endpoints/threads.js";
 
 export {
 	KurobaError,
@@ -35,8 +36,17 @@ export {
 	type RawCatalogReply,
 	type RawCatalogThread,
 } from "./types/catalog.js";
-
 export type {
 	KurobaClientOptions,
 	RequestOptions,
 } from "./types/options.js";
+export {
+	Post,
+	type RawPost,
+	type RawThreadListItem,
+	type RawThreadListPage,
+	type RawThreadResponse,
+	Thread,
+	ThreadListItem,
+	ThreadListPage,
+} from "./types/threads.js";
