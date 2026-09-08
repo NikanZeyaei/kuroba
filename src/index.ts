@@ -1,4 +1,5 @@
 export { createKurobaClient, KurobaClient } from "./client.js";
+export { ArchiveEndpoint } from "./endpoints/archive.js";
 export { BoardsEndpoint } from "./endpoints/boards.js";
 export { MediaHelper } from "./endpoints/media.js";
 

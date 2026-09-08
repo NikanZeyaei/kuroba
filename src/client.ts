@@ -1,3 +1,4 @@
+import { ArchiveEndpoint } from "./endpoints/archive.js";
 import { BoardsEndpoint } from "./endpoints/boards.js";
 import { MediaHelper } from "./endpoints/media.js";
 import type { TransportConfig } from "./transport.js";
@@ -14,6 +15,7 @@ export class KurobaClient {
 	readonly timeoutMs?: number | undefined;
 
 	readonly boards: BoardsEndpoint;
+	readonly archive: ArchiveEndpoint;
 	readonly media: MediaHelper;
 
 	constructor(options?: KurobaClientOptions) {
@@ -42,6 +44,7 @@ export class KurobaClient {
 		};
 
 		this.boards = new BoardsEndpoint(transport);
+		this.archive = new ArchiveEndpoint(transport);
 		this.media = new MediaHelper(this.mediaBaseUrl, this.staticBaseUrl);
 	}
 }

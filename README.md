@@ -72,6 +72,11 @@ Creates a client instance.
 #### `client.boards`
 
 - **`client.boards.list(options?: RequestOptions): Promise<Board[]>`**: Fetches `https://a.4cdn.org/boards.json` and returns the array of `Board` models (returns empty array `[]` on HTTP 304 Not Modified). Raw untouched wire JSON is accessible on each board instance via `board.raw`.
+
+#### `client.archive`
+
+- **`client.archive.list(board: string, options?: RequestOptions): Promise<number[]>`**: Fetches `https://a.4cdn.org/[board]/archive.json` and returns an array of archived thread IDs (numbers). Returns empty array `[]` on HTTP 304 Not Modified. Throws `KurobaHttpError` (404) if the board has no archive enabled.
+
 #### `client.media`
 
 URL helper methods for static and user-uploaded assets:
