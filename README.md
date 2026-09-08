@@ -77,6 +77,10 @@ Creates a client instance.
 
 - **`client.archive.list(board: string, options?: RequestOptions): Promise<number[]>`**: Fetches `https://a.4cdn.org/[board]/archive.json` and returns an array of archived thread IDs (numbers). Returns empty array `[]` on HTTP 304 Not Modified. Throws `KurobaHttpError` (404) if the board has no archive enabled.
 
+#### `client.catalog`
+
+- **`client.catalog.list(board: string, options?: RequestOptions): Promise<CatalogPage[]>`**: Fetches `https://a.4cdn.org/[board]/catalog.json` and returns the array of `CatalogPage` models containing threads and preview replies. Returns empty array `[]` on HTTP 304 Not Modified.
+
 #### `client.media`
 
 URL helper methods for static and user-uploaded assets:

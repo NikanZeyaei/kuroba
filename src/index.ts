@@ -1,6 +1,7 @@
 export { createKurobaClient, KurobaClient } from "./client.js";
 export { ArchiveEndpoint } from "./endpoints/archive.js";
 export { BoardsEndpoint } from "./endpoints/boards.js";
+export { CatalogEndpoint } from "./endpoints/catalog.js";
 export { MediaHelper } from "./endpoints/media.js";
 
 export {
@@ -25,6 +26,16 @@ export {
 	type RawBoardsResponse,
 	transformBoard,
 } from "./types/boards.js";
+
+export {
+	CatalogPage,
+	CatalogReply,
+	CatalogThread,
+	type RawCatalogPage,
+	type RawCatalogReply,
+	type RawCatalogThread,
+} from "./types/catalog.js";
+
 export type {
 	KurobaClientOptions,
 	RequestOptions,

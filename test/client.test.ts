@@ -3,6 +3,7 @@ import { describe, it } from "node:test";
 import {
 	ArchiveEndpoint,
 	BoardsEndpoint,
+	CatalogEndpoint,
 	createKurobaClient,
 	KurobaClient,
 	MediaHelper,
@@ -16,6 +17,7 @@ describe("KurobaClient initialization", () => {
 		assert.equal(client.staticBaseUrl, "https://s.4cdn.org");
 		assert.equal(client.timeoutMs, undefined);
 		assert.ok(client.boards instanceof BoardsEndpoint);
+		assert.ok(client.catalog instanceof CatalogEndpoint);
 		assert.ok(client.archive instanceof ArchiveEndpoint);
 		assert.ok(client.media instanceof MediaHelper);
 	});
