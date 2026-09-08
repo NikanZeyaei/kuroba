@@ -1,14 +1,51 @@
 {
-  "name": "kuroba",
-  "version": "0.0.0",
-  "description": "A type-safe TypeScript API client for 4chan and imageboards",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "packageManager": "pnpm@10.18.0",
-  "keywords": ["4chan", "imageboard", "api-client", "typescript"],
-  "author": "nikanzeyaei",
-  "license": "MIT"
-
+	"name": "kuroba",
+	"version": "0.0.0",
+	"description": "A type-safe TypeScript API client for 4chan and imageboards",
+	"type": "module",
+	"main": "./dist/index.js",
+	"types": "./dist/index.d.ts",
+	"exports": {
+		".": {
+			"types": "./dist/index.d.ts",
+			"browser": "./dist/index.js",
+			"import": "./dist/index.js",
+			"default": "./dist/index.js"
+		}
+	},
+	"files": [
+		"dist"
+	],
+	"scripts": {
+		"build": "tsc",
+		"typecheck": "tsc --noEmit",
+		"lint": "biome lint .",
+		"lint:fix": "biome lint --write .",
+		"format": "biome format .",
+		"format:write": "biome format --write .",
+		"check": "biome check .",
+		"check:fix": "biome check --write .",
+		"prepare": "lefthook install"
+	},
+	"packageManager": "pnpm@10.18.0",
+	"keywords": [
+		"4chan",
+		"imageboard",
+		"api-client",
+		"typescript"
+	],
+	"author": "nikanzeyaei",
+	"license": "MIT",
+	"devDependencies": {
+		"@biomejs/biome": "^2.5.12",
+		"@types/node": "^26.5.0",
+		"lefthook": "^2.1.12",
+		"typescript": "^7.0.2"
+	},
+	"pnpm": {
+		"onlyBuiltDependencies": [
+			"@biomejs/biome",
+			"lefthook"
+		]
+	}
 }
