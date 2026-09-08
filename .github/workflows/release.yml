@@ -36,6 +36,7 @@ jobs:
 
       - name: Verify build and test
         run: |
+          pnpm build
           pnpm check
           pnpm typecheck
           pnpm test

@@ -36,7 +36,7 @@
 		"version": "changeset version",
 		"release": "changeset publish",
 		"test": "pnpm build && node --test 'test/**/*.test.ts'",
-		"typecheck": "tsc --noEmit && tsc -p tsconfig.test.json",
+		"typecheck": "pnpm build && tsc -p tsconfig.test.json",
 		"lint:fix": "biome lint --write .",
 		"format": "biome format .",
 		"format:write": "biome format --write .",
@@ -51,6 +51,9 @@
 		"api-client",
 		"typescript"
 	],
+	"engines": {
+		"node": ">=22.0.0"
+	},
 	"author": "nikanzeyaei",
 	"license": "MIT",
 	"devDependencies": {

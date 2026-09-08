@@ -25,8 +25,10 @@ describe("Error handling and classes", () => {
 				await client.boards.list();
 			},
 			(err: unknown) => {
+				if (!(err instanceof KurobaHttpError)) {
+					return false;
+				}
 				assert.ok(err instanceof KurobaError);
-				assert.ok(err instanceof KurobaHttpError);
 				assert.equal(err.status, 404);
 				assert.equal(err.statusText, "Not Found");
 				assert.equal(err.url, "https://a.4cdn.org/boards.json");
@@ -53,7 +55,9 @@ describe("Error handling and classes", () => {
 				await client.boards.list();
 			},
 			(err: unknown) => {
-				assert.ok(err instanceof KurobaRateLimitError);
+				if (!(err instanceof KurobaRateLimitError)) {
+					return false;
+				}
 				assert.ok(err instanceof KurobaHttpError);
 				assert.ok(err instanceof KurobaError);
 				assert.equal(err.status, 429);
@@ -81,7 +85,9 @@ describe("Error handling and classes", () => {
 				await client.boards.list();
 			},
 			(err: unknown) => {
-				assert.ok(err instanceof KurobaParseError);
+				if (!(err instanceof KurobaParseError)) {
+					return false;
+				}
 				assert.ok(err instanceof KurobaError);
 				assert.equal(err.rawText, htmlResponse);
 				assert.equal(err.url, "https://a.4cdn.org/boards.json");
