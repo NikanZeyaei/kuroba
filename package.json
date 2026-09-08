@@ -1,6 +1,6 @@
 {
 	"name": "kuroba",
-	"version": "0.0.0",
+	"version": "0.0.1",
 	"description": "A type-safe TypeScript API client for 4chan and imageboards",
 	"type": "module",
 	"main": "./dist/index.js",
@@ -16,10 +16,26 @@
 	"files": [
 		"dist"
 	],
+	"sideEffects": false,
+	"publishConfig": {
+		"access": "public"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/nikanzeyaei/kuroba.git"
+	},
+	"bugs": {
+		"url": "https://github.com/nikanzeyaei/kuroba/issues"
+	},
+	"homepage": "https://github.com/nikanzeyaei/kuroba#readme",
 	"scripts": {
 		"build": "tsc",
-		"typecheck": "tsc --noEmit",
-		"lint": "biome lint .",
+		"prepack": "pnpm build",
+		"change": "changeset",
+		"version": "changeset version",
+		"release": "changeset publish",
+		"test": "pnpm build && node --test 'test/**/*.test.ts'",
+		"typecheck": "tsc --noEmit && tsc -p tsconfig.test.json",
 		"lint:fix": "biome lint --write .",
 		"format": "biome format .",
 		"format:write": "biome format --write .",
@@ -38,6 +54,8 @@
 	"license": "MIT",
 	"devDependencies": {
 		"@biomejs/biome": "^2.5.12",
+		"@changesets/changelog-github": "^1.0.1",
+		"@changesets/cli": "^3.0.2",
 		"@types/node": "^26.5.0",
 		"lefthook": "^2.1.12",
 		"typescript": "^7.0.2"
