@@ -23,12 +23,12 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/nikanzeyaei/kuroba.git"
+		"url": "https://github.com/NikanZeyaei/kuroba"
 	},
 	"bugs": {
-		"url": "https://github.com/nikanzeyaei/kuroba/issues"
+		"url": "https://github.com/NikanZeyaei/kuroba/issues"
 	},
-	"homepage": "https://github.com/nikanzeyaei/kuroba#readme",
+	"homepage": "https://github.com/NikanZeyaei/kuroba#readme",
 	"scripts": {
 		"build": "tsc",
 		"prepack": "pnpm build",

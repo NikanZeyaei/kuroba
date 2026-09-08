@@ -6,7 +6,7 @@
 	"changelog": [
 		"@changesets/changelog-github",
 		{
-			"repo": "nikanzeyaei/kuroba"
+			"repo": "NikanZeyaei/kuroba"
 		}
 	],
 	"commit": true,
